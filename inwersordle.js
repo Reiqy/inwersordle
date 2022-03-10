@@ -8,5 +8,8 @@ class Game {
     getRow(row) {
         return new Array();
     }
+    validateRow(row, entry) {
+        return true;
+    }
 }
 //# sourceMappingURL=inwersordle.js.map
