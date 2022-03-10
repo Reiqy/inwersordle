@@ -15,5 +15,5 @@ class Game implements Assignment {
 }
 
 interface GameProvider {
-    generateGame(): Game;
+    generateGame(): Assignment;
 }
