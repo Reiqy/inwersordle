@@ -5,7 +5,7 @@ enum Color {
 }
 
 interface Assignment {
-    getRow(row: number): Color[]
+    getRow(row: number): Color[];
 }
 
 class Game implements Assignment {
