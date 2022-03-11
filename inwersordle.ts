@@ -4,6 +4,8 @@ enum Color {
     Green,
 }
 
+
+
 interface Assignment {
     getRow(row: number): Color[];
     validateRow(row: number, entry: string): boolean;
@@ -22,3 +24,4 @@ class Game implements Assignment {
 interface GameProvider {
     generateGame(): Assignment;
 }
+

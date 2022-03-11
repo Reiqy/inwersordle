@@ -1,0 +1,63 @@
+#content {
+	width: 400px;
+	aspect-ratio: 1;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+}
+
+#wordle {
+	width: 100%;
+	aspect-ratio: 1;
+	text-transform: uppercase;
+	font-family: "Source Code Pro";
+}
+
+.row {
+	width: 100%;
+	height: 72px;
+}
+
+.row:not(.cell.first) {
+	margin-top: 10px;
+}
+
+.cell {
+	height: calc(100% - 4px);
+	aspect-ratio: 1;
+
+	float: left;
+
+	border: 1px solid #bebebe;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px 1px;
+
+	font-size: 50px;
+	text-align: center;
+
+	transition: background-color linear 0.3s;
+}
+
+.cell:hover {
+	cursor: pointer;
+}
+
+.cell:not(.row.first) {
+	margin-left: 10px;
+}
+
+.cell.selected {
+	border: 1px solid red;
+}
+
+.cell.correct {
+	background-color: #61e835;
+}
+
+.cell.mispositioned {
+	background-color: #cce835;
+}
+
+.cell.incorrect {
+	background-color: #97a094;
+}

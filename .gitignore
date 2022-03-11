@@ -1,0 +1,5 @@
+# build files
+.vscode/
+
+# JS
+node_modules/

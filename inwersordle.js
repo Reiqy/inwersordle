@@ -4,12 +4,14 @@ var Color;
     Color[Color["Yellow"] = 1] = "Yellow";
     Color[Color["Green"] = 2] = "Green";
 })(Color || (Color = {}));
-class Game {
-    getRow(row) {
+var Game = /** @class */ (function () {
+    function Game() {
+    }
+    Game.prototype.getRow = function (row) {
         return new Array();
-    }
-    validateRow(row, entry) {
+    };
+    Game.prototype.validateRow = function (row, entry) {
         return true;
-    }
-}
-//# sourceMappingURL=inwersordle.js.map
+    };
+    return Game;
+}());
