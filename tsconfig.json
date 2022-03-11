@@ -2,10 +2,8 @@
     "compilerOptions": {
       "target": "es6",
       "module": "commonjs",
-      "sourceMap": true
-    },
-	"files": [
-		"inwersordle.ts",
-		"inwersordle_ui.ts"
-	]
+      "sourceMap": true,
+	  "outDir": "ts-built",
+	  "rootDir": "src"
+    }
 }

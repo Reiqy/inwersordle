@@ -2,28 +2,27 @@ function validate() {
     return true;
 }
 function selectCell(selectedCell) {
-    var cells = document.getElementsByClassName("cell");
-    for (var _i = 0, _a = cells; _i < _a.length; _i++) {
-        var cell = _a[_i];
+    let cells = document.getElementsByClassName("cell");
+    for (let cell of cells) {
         cell.classList.remove("selected");
     }
     selectedCell.classList.add("selected");
     return selectedCell;
 }
 $(function () {
-    var currentlySelected = $(".row.first .cell.first")[0];
+    let currentlySelected = $(".row.first .cell.first")[0];
     selectCell(currentlySelected);
     $(".cell").on("click", function (e) {
         currentlySelected = selectCell(e.target);
     });
     $(document).on("keydown", function (e) {
         if (e.key == "ArrowLeft") {
-            var previousSibling = currentlySelected.previousElementSibling;
+            let previousSibling = currentlySelected.previousElementSibling;
             if (previousSibling)
                 currentlySelected = selectCell(previousSibling);
         }
         else if (e.key == "ArrowRight") {
-            var nextSibling = currentlySelected.nextElementSibling;
+            let nextSibling = currentlySelected.nextElementSibling;
             if (nextSibling)
                 currentlySelected = selectCell(nextSibling);
         }
@@ -43,3 +42,4 @@ $(function () {
     });
     console.log(currentlySelected);
 });
+//# sourceMappingURL=inwersordle_ui.js.map
