@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
       "target": "es6",
-      "module": "commonjs",
+      "module": "es6",
       "sourceMap": true,
-	  "outDir": "ts-built",
-	  "rootDir": "src"
+      "outDir": "ts-built",
+      "rootDir": "src",
+      "noImplicitAny": true,
     }
 }
