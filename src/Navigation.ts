@@ -18,6 +18,26 @@ export class Navigation {
 		this.selectCell(nextSibling);
 	}
 
+	selectAdjacentRow(previousRow: boolean = false): void {
+		let childNodes = this.currentlySelected.parentElement.querySelectorAll("div");
+
+                let i = 0;
+                for (; i < childNodes.length; i++) {
+                    if (childNodes[i] == this.currentlySelected) {
+                        break;
+                    }
+                }
+
+                let adjacentCell;
+                if (previousRow) {
+                    adjacentCell = this.currentlySelected.parentElement.previousElementSibling?.querySelectorAll("div")[i];
+                } else {
+                    adjacentCell = this.currentlySelected.parentElement.nextElementSibling?.querySelectorAll("div")[i];
+                }
+
+                this.selectCell(adjacentCell);
+	}
+
 
 	selectCell(selectedCell: HTMLElement): void {
 		if (selectedCell == null) {
@@ -46,8 +66,10 @@ export class Navigation {
 				this.selectNextCell();
 				break;
 			case "ArrowUp":
+                                this.selectAdjacentRow(true)
 				break;
 			case "ArrowDown":
+                                this.selectAdjacentRow()
 				break;
 		}
 	}

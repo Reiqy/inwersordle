@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
       "target": "es6",
-      "module": "commonjs",
+      "module": "es6",
       "sourceMap": true,
       "outDir": "ts-built",
       "noImplicitAny": true,
@@ -10,5 +10,5 @@
     "include": [
       "src/**/*"
     ],
-    "compileOnSave": true,
+    "compileOnSave": true
 }

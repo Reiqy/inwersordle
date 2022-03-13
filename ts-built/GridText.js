@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.GridText = void 0;
-class GridText {
+export class GridText {
     static addTextListener(event, navigation) {
         switch (event.key) {
             case "Backspace":
@@ -22,5 +19,4 @@ class GridText {
         }
     }
 }
-exports.GridText = GridText;
 //# sourceMappingURL=GridText.js.map

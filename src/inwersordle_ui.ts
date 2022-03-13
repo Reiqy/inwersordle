@@ -16,7 +16,7 @@ function composeWord(selectedCell: HTMLElement) {
 		s += child.innerHTML;
 	});
 
-	return s
+	return s.toUpper();
 }
 
 $(function() {
