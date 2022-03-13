@@ -4,12 +4,11 @@
       "module": "es6",
       "sourceMap": true,
       "outDir": "ts-built",
-      "rootDir": "src",
       "noImplicitAny": true,
       "moduleResolution": "node"
     },
     "include": [
       "src/**/*"
     ],
-    "compileOnSave": true,
+    "compileOnSave": true
 }
