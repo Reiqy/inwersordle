@@ -2309,7 +2309,6 @@ const WORDS = [
     "zesty",
     "zonal",
 ];
-
 var Color;
 (function (Color) {
     Color[Color["Gray"] = 0] = "Gray";
@@ -2324,7 +2323,6 @@ class Game {
         return true;
     }
 }
-
 class Random {
     constructor() {
         this.generate = this.getGenerator(this.getSeeder(this.getInitialSeed())());
