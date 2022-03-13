@@ -16,12 +16,13 @@ function composeWord(selectedCell: HTMLElement) {
 		s += child.innerHTML;
 	});
 
-	return s.toUpper();
+	return s.toUpperCase();
 }
 
 $(function() {
 	let navigation = new Navigation()
-	navigation.selectCell($(".row.first .cell.first")[0]);
+	let firstCell: HTMLElement = $(".row.first .cell.first")[0];
+	navigation.selectCell(firstCell);
 
 	$(".cell").on("click", function(e) {
 		navigation.selectCell(e.target);

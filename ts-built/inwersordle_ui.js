@@ -12,11 +12,12 @@ function composeWord(selectedCell) {
     children.forEach(function (child) {
         s += child.innerHTML;
     });
-    return s.toUpper();
+    return s.toUpperCase();
 }
 $(function () {
     let navigation = new Navigation();
-    navigation.selectCell($(".row.first .cell.first")[0]);
+    let firstCell = $(".row.first .cell.first")[0];
+    navigation.selectCell(firstCell);
     $(".cell").on("click", function (e) {
         navigation.selectCell(e.target);
     });
