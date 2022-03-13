@@ -3,7 +3,12 @@
       "target": "es6",
       "module": "commonjs",
       "sourceMap": true,
-	  "outDir": "ts-built",
-	  "rootDir": "src"
-    }
+      "outDir": "ts-built",
+      "noImplicitAny": true,
+      "moduleResolution": "node"
+    },
+    "include": [
+      "src/**/*"
+    ],
+    "compileOnSave": true,
 }
