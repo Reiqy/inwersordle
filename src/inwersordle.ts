@@ -2389,7 +2389,8 @@ class GameFactory implements GameProvider {
         const wordCount = WORDS.length;
         let targetWord = WORDS[random.nextInt(wordCount)];
         console.log(targetWord);
-        return null;
+        
+        return new Game();
     }
 }
 

@@ -1,3 +1,9 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jquery_1 = __importDefault(require("jquery"));
 function selectCell(selectedCell) {
     if (selectedCell.classList.contains("submitted")) {
         return null;
@@ -32,13 +38,13 @@ function composeWord(selectedCell) {
     });
     return s;
 }
-$(function () {
-    let currentlySelected = $(".row.first .cell.first")[0];
+(0, jquery_1.default)(function () {
+    let currentlySelected = (0, jquery_1.default)(".row.first .cell.first")[0];
     selectCell(currentlySelected);
-    $(".cell").on("click", function (e) {
+    (0, jquery_1.default)(".cell").on("click", function (e) {
         currentlySelected = selectCell(e.target) || currentlySelected;
     });
-    $(document).on("keydown", function (e) {
+    (0, jquery_1.default)(document).on("keydown", function (e) {
         if (currentlySelected == null)
             return;
         switch (e.key) {
