@@ -15,7 +15,7 @@ function composeWord(selectedCell: HTMLElement) {
 	children.forEach(function(child: HTMLDivElement) {
 		s += child.innerHTML;
 	});
-
+  
 	return s.toUpperCase();
 }
 
@@ -32,5 +32,4 @@ $(function() {
 		navigation.addNavigationListener(event);
 		GridText.addTextListener(event, navigation);
 	});
-
 });

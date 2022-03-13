@@ -1,17 +1,20 @@
 import { Navigation } from "./Navigation.js";
 import { GridText } from "./GridText.js";
+
 function disableRow(selectedCell) {
     let rowCells = selectedCell.parentElement.querySelectorAll("div");
     rowCells.forEach(function (cell) {
         cell.classList.add("submitted");
     });
 }
+
 function composeWord(selectedCell) {
     let s = "";
     let children = selectedCell.parentElement.querySelectorAll("div");
     children.forEach(function (child) {
         s += child.innerHTML;
     });
+
     return s.toUpperCase();
 }
 $(function () {
