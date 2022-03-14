@@ -21,7 +21,7 @@ export class Navigation {
 	selectAdjacentRow(previousRow: boolean = false): void {
 		let childNodes = this.currentlySelected.parentElement.querySelectorAll("div");
 
-                let i = 0;
+                let i = 0
                 for (; i < childNodes.length; i++) {
                     if (childNodes[i] == this.currentlySelected) {
                         break;
