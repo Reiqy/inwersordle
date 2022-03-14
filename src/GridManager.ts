@@ -1,4 +1,4 @@
-import { Navigation } from "./Navigation.js"
+import { NavigationManager } from "./NavigationManager.js"
 import { GameFactory } from "./inwersordle.js"
 
 export class GridManager {
@@ -13,7 +13,7 @@ export class GridManager {
 	static fillTargetWord() {
 		GridManager.fillWord(5, GameFactory.chooseWord());
 	}
-	static addTextListener(event: KeyboardEvent, navigation: Navigation): void {
+	static addTextListener(event: KeyboardEvent, navigation: NavigationManager): void {
 		switch (event.key) {
 			case "Backspace":
 				if (navigation.deleteSelected.innerHTML == "") {

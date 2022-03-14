@@ -4,9 +4,10 @@ export class NavigationManager {
         this.currentlySelected = $(".row.first div.cell")[1];
         this.deleteSelected = this.currentlySelected;
         this.selectByIndex(2, 2);
+        this.syncSelections();
     }
     syncSelections() {
-        // this.deleteSelected = this.currentlySelected;
+        this.deleteSelected = this.currentlySelected;
         // this.currentlySelected = this.deleteSelected;
     }
     selectByIndex(row, column) {
