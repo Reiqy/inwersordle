@@ -1,5 +1,6 @@
 html, body {
   margin: 0;
+  background-color: #484349;
 }
 
 nav#primary {
@@ -7,7 +8,7 @@ nav#primary {
   display: inline-block;
   position: relative;
   height: 40px;
-  background-color: pink;
+  background-color: #D17B0F;
 }
 
 nav#primary ul {
@@ -65,6 +66,8 @@ nav#primary img {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 2px 2px 2px 1px;
 
+  color: #FFFFFF;
+
   transition: all linear 0.4s;
   transition-property: color, background-color;
 }
@@ -82,16 +85,13 @@ nav#primary img {
 }
 
 .cell.correct {
-  color: #FFFFFF;
-  background-color: #415D43;
+  background-color: #109648;
 }
 
 .cell.mispositioned {
-  color: #FFFFFF;
-  background-color: #787A00;
+  background-color: #197BBD;
 }
 
 .cell.incorrect {
-  color: #FFFFFF;
-  background-color: #9B9B93;
+  background-color: #9D9D9D;
 }
