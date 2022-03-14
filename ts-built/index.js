@@ -1,5 +1,5 @@
-import { NavigationManager } from "./NavigationManager.js";
-import { GridManager } from "./GridManager.js";
+import { Navigation } from "./Navigation.js";
+import { GridText } from "./GridText.js";
 function disableRow(selectedCell) {
     let rowCells = selectedCell.parentElement.querySelectorAll("div");
     rowCells.forEach(function (cell) {
@@ -15,14 +15,15 @@ function composeWord(selectedCell) {
     return s.toUpperCase();
 }
 $(function () {
-    GridManager.fillTargetWord();
-    let navigation = new NavigationManager();
+    let navigation = new Navigation();
+    let firstCell = $(".row.first .cell.first")[0];
+    navigation.selectCell(firstCell);
     $(".cell").on("click", function (e) {
         navigation.selectCell(e.target);
     });
     document.addEventListener("keydown", function (event) {
         navigation.addNavigationListener(event);
-        GridManager.addTextListener(event, navigation);
+        GridText.addTextListener(event, navigation);
     });
 });
-//# sourceMappingURL=inwersordle_ui.js.map
+//# sourceMappingURL=index.js.map

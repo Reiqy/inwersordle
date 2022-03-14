@@ -2360,12 +2360,15 @@ class Random {
         return Math.floor(upper * this.next());
     }
 }
-class GameFactory {
-    generateGame() {
+export class GameFactory {
+    static chooseWord() {
         const random = new Random();
         const wordCount = WORDS.length;
         let targetWord = WORDS[random.nextInt(wordCount)];
-        console.log(targetWord);
+        return targetWord;
+    }
+    generateGame() {
+        console.log(GameFactory.chooseWord());
         return null;
     }
 }

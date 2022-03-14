@@ -1,5 +1,5 @@
-import { Navigation } from "./Navigation.js"
-import { GridText } from "./GridText.js"
+import { NavigationManager } from "./NavigationManager.js"
+import { GridManager } from "./GridManager.js"
 
 
 function disableRow(selectedCell: HTMLElement) {
@@ -20,9 +20,9 @@ function composeWord(selectedCell: HTMLElement) {
 }
 
 $(function() {
-	let navigation = new Navigation()
-	let firstCell: HTMLElement = $(".row.first .cell.first")[0];
-	navigation.selectCell(firstCell);
+  GridManager.fillTargetWord();
+
+	let navigation = new NavigationManager()
 
 	$(".cell").on("click", function(e) {
 		navigation.selectCell(e.target);
@@ -30,6 +30,9 @@ $(function() {
 
 	document.addEventListener("keydown", function(event: KeyboardEvent) {
 		navigation.addNavigationListener(event);
-		GridText.addTextListener(event, navigation);
+		GridManager.addTextListener(event, navigation);
 	});
+
+
+
 });
