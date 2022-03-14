@@ -2383,12 +2383,17 @@ interface GameProvider {
     generateGame(): Assignment;
 }
 
-class GameFactory implements GameProvider {
-    public generateGame(): Assignment {
+export class GameFactory implements GameProvider {
+    static chooseWord(): string {
         const random = new Random();
         const wordCount = WORDS.length;
         let targetWord = WORDS[random.nextInt(wordCount)];
-        console.log(targetWord);
+
+        return targetWord;
+    }
+
+    public generateGame(): Assignment {
+        console.log(GameFactory.chooseWord());
         return null;
     }
 }
