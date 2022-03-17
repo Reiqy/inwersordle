@@ -1,18 +1,41 @@
 export class NavigationManager {
-	public currentlySelected: HTMLElement;
-	public deleteSelected: HTMLElement;
+  private _selected: {
+    input: HTMLElement,
+    del: HTMLElement
+  }
 
 	constructor() {
-		// this.currentlySelected = $(".row.first .cell.first")[0];
-		this.currentlySelected = $(".row.first div.cell")[1];
-		this.deleteSelected = this.currentlySelected;
-		this.selectByIndex(2, 2);
+    this._selected = {
+      input: $(".row.first .cell.first")[0],
+      del: $(".row.first .cell.first")[0]
+    }
+
+		this.selectByIndex(2, 4);
     this.syncSelections();
 	}
 
-	syncSelections(): void {
-		this.deleteSelected = this.currentlySelected;
-		// this.currentlySelected = this.deleteSelected;
+  get inputPosition(): HTMLElement {
+    return this._selected["input"];
+  }
+
+  set inputPosition(value: HTMLElement) {
+    this._selected["input"] = value;
+  }
+
+  get delPosition(): HTMLElement {
+    return this._selected["del"];
+  }
+
+  set delPosition(value: HTMLElement) {
+    this._selected["del"] = value;
+  }
+
+  syncSelections(inputToDeletion: boolean = false): void {
+    if (inputToDeletion) {
+      this.selectCell(this.delPosition);
+    } else {
+      this.selectCell(this.inputPosition, true);
+    }
 	}
 
 	selectByIndex(row: number, column: number): void {
@@ -21,48 +44,61 @@ export class NavigationManager {
 		}
 
 		let cell = document.querySelectorAll("div.row")[row].children[column] as HTMLElement;
-
 		this.selectCell(cell);
 		this.syncSelections();
 	}
 
-	selectPreviousCell(moveBetweenRows: boolean = false, moveDeletionSelect: boolean = false): void {
-    let cell = moveDeletionSelect ? this.deleteSelected : this.currentlySelected;
-
+  getPreviousCell(cell: HTMLElement, moveBetweenRows: boolean = false) {
 		let previousSibling: HTMLElement = cell.previousElementSibling as HTMLElement;
 		if (moveBetweenRows && previousSibling == null) {
-			previousSibling = cell.parentElement.previousElementSibling.lastElementChild as HTMLElement;
+      // select last cell from previous row
+      if (cell.parentElement.previousElementSibling)
+        return cell.parentElement.previousElementSibling.lastElementChild as HTMLElement;
 		}
+
+    return previousSibling;
+  }
+
+	selectPreviousCell(moveBetweenRows: boolean = false, moveDeletionSelect: boolean = false): void {
+    let cell = moveDeletionSelect ? this.delPosition : this.inputPosition;
+    let previousSibling = this.getPreviousCell(cell, moveBetweenRows);
 
 		this.selectCell(previousSibling, moveDeletionSelect);
 	}
 
-	selectNextCell(moveBetweenRows: boolean = false, moveDeletionSelect: boolean = false ): void {
-    let cell = moveDeletionSelect ? this.deleteSelected : this.currentlySelected;
-
+  getNextCell(cell: HTMLElement, moveBetweenRows: boolean = false) {
 		let nextSibling: HTMLElement = cell.nextElementSibling as HTMLElement;
 		if (moveBetweenRows && nextSibling == null) {
-			nextSibling = cell.parentElement.nextElementSibling?.firstElementChild as HTMLElement;
+      // select last cell from previous row
+      if (cell.parentElement.nextElementSibling)
+        return cell.parentElement.nextElementSibling.firstElementChild as HTMLElement;
 		}
+
+    return nextSibling;
+  }
+
+	selectNextCell(moveBetweenRows: boolean = false, moveDeletionSelect: boolean = false ): void {
+    let cell = moveDeletionSelect ? this.delPosition : this.inputPosition;
+    let nextSibling = this.getNextCell(cell, moveBetweenRows);
 
 		this.selectCell(nextSibling, moveDeletionSelect);
 	}
 
 	selectAdjacentRow(previousRow: boolean = false): void {
-		let childNodes = this.currentlySelected.parentElement.querySelectorAll("div");
+		let childNodes = this.inputPosition.parentElement.querySelectorAll("div");
 
 		let i = 0
 		for (; i < childNodes.length; i++) {
-			if (childNodes[i] == this.currentlySelected) {
+			if (childNodes[i] == this.inputPosition) {
 				break;
 			}
 		}
 
 		let adjacentCell;
 		if (previousRow) {
-			adjacentCell = this.currentlySelected.parentElement.previousElementSibling?.querySelectorAll("div")[i];
+			adjacentCell = this.inputPosition.parentElement.previousElementSibling?.querySelectorAll("div")[i];
 		} else {
-			adjacentCell = this.currentlySelected.parentElement.nextElementSibling?.querySelectorAll("div")[i];
+			adjacentCell = this.inputPosition.parentElement.nextElementSibling?.querySelectorAll("div")[i];
 		}
 
 		this.selectCell(adjacentCell);
@@ -75,7 +111,7 @@ export class NavigationManager {
 		}
 
 		if (moveDeletionSelect) {
-			this.deleteSelected = selectedCell;
+			this.delPosition = selectedCell;
 			return;
 		}
 
@@ -85,7 +121,7 @@ export class NavigationManager {
 		}
 
 		selectedCell.classList.add("selected");
-		this.currentlySelected = selectedCell;
+		this.inputPosition = selectedCell;
 	}
 
 	addNavigationListener(event: KeyboardEvent): void {
@@ -108,6 +144,4 @@ export class NavigationManager {
 				break;
 		}
 	}
-
-
 }

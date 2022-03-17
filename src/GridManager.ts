@@ -16,25 +16,38 @@ export class GridManager {
 	static addTextListener(event: KeyboardEvent, navigation: NavigationManager): void {
 		switch (event.key) {
 			case "Backspace":
-				if (navigation.deleteSelected.innerHTML == "") {
-					navigation.selectPreviousCell(true, true);
-				}
+        if (navigation.inputPosition.innerHTML != "") {
+          navigation.inputPosition.innerHTML = "";
+          navigation.selectPreviousCell(true, true);
+        } else {
+          if (navigation.delPosition == navigation.getNextCell(navigation.inputPosition, true)) {
+            navigation.syncSelections();
+          }
+          navigation.delPosition.innerHTML = "";
+          navigation.selectPreviousCell(true, true);
+          navigation.selectPreviousCell(true, false);
+        }
 
-				navigation.deleteSelected.innerHTML = ""
-				navigation.selectPreviousCell(true, true);
 				break;
 			case "Delete":
-				if (navigation.deleteSelected.innerHTML == "") {
-					navigation.selectNextCell(true, true);
-				}
+        if (navigation.delPosition == navigation.getPreviousCell(navigation.inputPosition, true)) {
+          navigation.syncSelections();
+        }
+        if (navigation.inputPosition.innerHTML != "") {
+          navigation.inputPosition.innerHTML = "";
+          navigation.selectNextCell(true, true);
+        } else {
 
-				navigation.deleteSelected.innerHTML = ""
-				navigation.selectNextCell(true, true);
-				console.log(navigation.deleteSelected);
-				break;
+          navigation.delPosition.innerHTML = "";
+          navigation.selectNextCell(true, true);
+          navigation.selectNextCell(true, false);
+        }
+
+        break;
 		}
+
 		if (/^[a-zA-Z]$/.test(event.key)) {
-			navigation.currentlySelected.innerHTML = event.key;
+			navigation.inputPosition.innerHTML = event.key;
 
 			// if (checkCompleted()) {
 			// 	disableRow(currentlySelected);
