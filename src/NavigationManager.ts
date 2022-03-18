@@ -6,12 +6,10 @@ export class NavigationManager {
 
 	constructor() {
     this._selected = {
-      input: $(".row.first .cell.first")[0],
-      del: $(".row.first .cell.first")[0]
-    }
-
-		this.selectByIndex(2, 4);
-    this.syncSelections();
+      input: $(".row:first .cell:first")[0],
+      del: $(".row:first .cell:first")[0]
+    };
+    this.selectCell($(".row:first .cell:first")[0]);
 	}
 
   get inputPosition(): HTMLElement {
