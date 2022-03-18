@@ -2,7 +2,7 @@
   "name": "inwersordle",
   "description": "",
   "scripts": {
-	  "build": "webpack"
+    "build": "tsc && webpack"
   },
   "dependencies": {
     "@types/jquery.browser": "^0.1.1",
