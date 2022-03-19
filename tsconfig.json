@@ -1,14 +1,13 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "module": "es6",
-      "sourceMap": true,
-      "outDir": "ts-built",
-      "noImplicitAny": true,
-      "moduleResolution": "node"
-    },
-    "include": [
-      "src/**/*"
-    ],
-    "compileOnSave": true
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "ts-built",
+    "removeComments": true
+  },
+  "include": ["src/**/*"]
 }
