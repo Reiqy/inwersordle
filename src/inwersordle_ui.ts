@@ -1,31 +1,28 @@
-import { NavigationManager } from "./NavigationManager.js"
-import { GridManager } from "./GridManager.js"
-
+import { NavigationManager } from "./NavigationManager.js";
+import { GridManager } from "./GridManager.js";
 
 function composeWord(selectedCell: HTMLElement) {
-	let s: string = "";
-	let children: NodeListOf<HTMLDivElement> = selectedCell.parentElement.querySelectorAll("div");
-	children.forEach(function(child: HTMLDivElement) {
-		s += child.innerHTML;
-	});
-  
-	return s.toUpperCase();
+  let s: string = "";
+  let children: NodeListOf<HTMLDivElement> =
+    selectedCell.parentElement.querySelectorAll("div");
+  children.forEach(function (child: HTMLDivElement) {
+    s += child.innerHTML;
+  });
+
+  return s.toUpperCase();
 }
 
-$(function() {
+$(function () {
   GridManager.fillTargetWord();
 
-	let navigation = new NavigationManager()
+  let navigation = new NavigationManager();
 
-	$(".cell").on("click", function(e) {
-		navigation.selectCell(e.target);
-	});
+  $(".cell").on("click", function (e) {
+    navigation.selectCell(e.target);
+  });
 
-	document.addEventListener("keydown", function(event: KeyboardEvent) {
-		navigation.addNavigationListener(event);
-		GridManager.addTextListener(event, navigation);
-	});
-
-
-
+  document.addEventListener("keydown", function (event: KeyboardEvent) {
+    navigation.addNavigationListener(event);
+    GridManager.addTextListener(event, navigation);
+  });
 });
