@@ -1,13 +1,13 @@
 {
-	"src/*.ts": {
-		"type": "source",
-		"alternate": "test/{}.test.ts"
-	},
-	"test/*.test.ts": {
-		"type": "test",
-		"alternate": "src/{}.ts"
-	},
-	"*.ts": {
-		"start": "npx live-server"
-	}
+  "src/*.ts": {
+    "type": "source",
+    "alternate": "test/{}.test.ts"
+  },
+  "test/*.test.ts": {
+    "type": "test",
+    "alternate": "src/{}.ts"
+  },
+  "*.ts": {
+    "start": "npx live-server"
+  }
 }
